@@ -22,7 +22,6 @@ fn main() {
 }
 
 fn loginLoop() {
-    
     let mut looper = 3;
     loop {
         if looper == 0 {
@@ -30,21 +29,24 @@ fn loginLoop() {
             process::abort();
         } else {
             let myUser = String::from(readUserInput(String::from("Please type username:")));
+            //need a list of users here that can be matched to once a username is typed
+
 
             let myPassword = String::from(passwordInput(false));
+            //need a list of passwords to be matched to
 
-
-
-            match myPassword.as_str() {
-                "Password1" => {
-                    println!("Success");
-                    break;
-                }
-                _ => {
-                    looper += -1;
-                    println!("Incorrect Password, try again.")
+            if myUser.trim() == String::from("rhys"){
+                match myPassword.as_str() {
+                    "Password1" => {
+                        println!("Success");
+                        break;
+                    }
+                    _ => {
+                        println!("Incorrect Password, try again.")
+                    }
                 }
             }
+            looper += -1;
         }
     }
 }
@@ -156,7 +158,7 @@ fn createUser() {
         team: String::from(readUserInput(String::from("Please input users team:"))),
     };
     println!();
-    println!("First Name is: {}", userInput.fName);
+    println!("Adding User......");
     waitPlease();
 }
 
